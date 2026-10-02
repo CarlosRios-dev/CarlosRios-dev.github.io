@@ -1,0 +1,396 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Carlos Ríos · QA Automation Engineer</title>
+<meta name="description" content="Carlos Ríos, QA Automation Engineer en Colombia. Automatización de pruebas E2E, API y datos con Selenium, Java, Serenity BDD y Cucumber.">
+<meta name="theme-color" content="#0b0d1f">
+<meta name="author" content="Carlos Andrés Ríos Pérez">
+<!-- DEPLOY STEP: og:url and og:image carry the live absolute URL -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Carlos Ríos · QA Automation Engineer">
+<meta property="og:description" content="Señal, no ruido. Automatización de pruebas E2E, API y datos.">
+<meta property="og:url" content="https://carlosrios-dev.github.io/">
+<meta property="og:image" content="https://carlosrios-dev.github.io/assets/img/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://carlosrios-dev.github.io/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b0d1f'/%3E%3Cpath d='M28 20a12 12 0 1 0 0 24' fill='none' stroke='%237fe7ff' stroke-width='5' stroke-linecap='round'/%3E%3Cpath d='M34 44V20h7a7 7 0 0 1 0 14h-7l10 10' fill='none' stroke='%237fe7ff' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='50' cy='16' r='4' fill='%23ff5a5f'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Manrope:wght@400;600&family=Unbounded:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<a class="skip" href="#main" data-i18n="skip">Saltar al contenido</a>
+
+<canvas id="env" class="env" aria-hidden="true"></canvas>
+<div class="env-glow" aria-hidden="true"></div>
+
+<header class="nav" id="top">
+  <a class="brand" href="#top" aria-label="Carlos Ríos, inicio">
+    <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M28 20a12 12 0 1 0 0 24" /><path d="M34 44V20h7a7 7 0 0 1 0 14h-7l10 10" /><circle cx="50" cy="16" r="4" /></svg>
+    <span>Carlos Ríos</span>
+  </a>
+  <nav aria-label="Principal" class="nav-links">
+    <a href="#perfil" data-i18n="nav.profile">Perfil</a>
+    <a href="#capas" data-i18n="nav.layers">Capas</a>
+    <a href="#experiencia" data-i18n="nav.experience">Experiencia</a>
+    <a href="#stack" data-i18n="nav.stack">Stack</a>
+    <a href="#faq" data-i18n="nav.faq">Preguntas</a>
+  </nav>
+  <div class="nav-right">
+    <div class="lang" role="group" aria-label="Idioma / Language">
+      <button type="button" data-lang="es" aria-pressed="true">ES</button>
+      <button type="button" data-lang="en" aria-pressed="false">EN</button>
+    </div>
+    <a class="btn btn-accent btn-sm" href="#contacto" data-i18n="nav.cta">Hablemos</a>
+  </div>
+</header>
+
+<main id="main" tabindex="-1">
+
+<!-- ===== HERO: scroll-scrubbed journey ===== -->
+<section class="hero" id="hero" aria-label="Introducción">
+  <div class="stage">
+    <div class="poster" aria-hidden="true"></div>
+    <video id="hero-video" preload="none" muted playsinline aria-hidden="true" tabindex="-1"></video>
+    <div class="scrim" aria-hidden="true"></div>
+
+    <div class="band band-1 fx-scatter" data-a="0" data-b="0.22">
+      <p class="kicker chip mono" data-i18n="hero.kicker">Carlos Ríos · QA Automation Engineer</p>
+      <h1 class="split display xl" data-i18n="hero.b1">Encuentro el error antes que tus usuarios.</h1>
+    </div>
+
+    <div class="band band-2 fx-grid" data-a="0.26" data-b="0.48" data-spread="0.5">
+      <h2 class="split display lg" data-i18n="hero.b2">Cada release trae ruido.</h2>
+      <p class="sub" data-i18n="hero.b2s">Pruebas inestables. Regresión manual. Un verde en el que nadie cree.</p>
+    </div>
+
+    <div class="band band-3 fx-drift" data-a="0.52" data-b="0.74">
+      <h2 class="split display lg" data-i18n="hero.b3">Yo lo convierto en señal.</h2>
+      <p class="sub" data-i18n="hero.b3s">Selenium, Serenity BDD y Cucumber, corriendo en cada pipeline.</p>
+    </div>
+
+    <div class="band band-4 fx-rise" data-a="0.80" data-b="1" data-ramp="0.06">
+      <h2 class="split display xl" data-i18n="hero.b4">Señal, no ruido.</h2>
+      <p class="sub settle-sub mono" data-i18n="hero.b4s">QA Automation Engineer · Colombia</p>
+      <div class="cta-row">
+        <a class="btn btn-accent" href="#contacto" data-i18n="cta.talk">Hablemos</a>
+        <a class="btn btn-ghost cv-link" href="assets/cv/Carlos-Rios-CV-ES.pdf" download data-i18n="cta.cv">Descargar CV</a>
+      </div>
+    </div>
+
+    <!-- Static hero copy (phones, portrait tablets, reduced motion) -->
+    <div class="static-copy">
+      <p class="kicker chip mono" data-i18n="hero.kicker">Carlos Ríos · QA Automation Engineer</p>
+      <h1 class="display xl" data-i18n="hero.b1">Encuentro el error antes que tus usuarios.</h1>
+      <p class="sub" data-i18n="hero.static">Automatizo pruebas E2E, de API y de datos para que el verde de tu pipeline signifique algo.</p>
+      <div class="cta-row">
+        <a class="btn btn-accent" href="#contacto" data-i18n="cta.talk">Hablemos</a>
+        <a class="btn btn-ghost cv-link" href="assets/cv/Carlos-Rios-CV-ES.pdf" download data-i18n="cta.cv">Descargar CV</a>
+      </div>
+    </div>
+
+    <div class="loader" aria-hidden="true">
+      <svg class="ring" viewBox="0 0 48 48"><circle cx="24" cy="24" r="20" fill="none" stroke="currentColor" stroke-opacity=".18" stroke-width="3"/><circle class="ring-fill" cx="24" cy="24" r="20" fill="none" stroke="currentColor" stroke-width="3" stroke-dasharray="126" style="stroke-dashoffset:var(--ld,126)"/></svg>
+      <span class="cue mono" data-i18n="hero.cue">Desliza para escanear</span>
+    </div>
+    <div class="hud chip mono" aria-hidden="true"><span class="hud-dot"></span><span class="hud-text">scan 000%</span></div>
+  </div>
+</section>
+
+<!-- ===== 01 PERFIL ===== -->
+<section class="section profile" id="perfil">
+  <div class="wrap profile-grid">
+    <div class="profile-copy reveal">
+      <p class="eyebrow mono"><span>01</span> <span data-i18n="profile.eyebrow">Perfil</span></p>
+      <h2 class="display h2" data-i18n="profile.title">Automatizo lo que se repite. Reviso lo que importa.</h2>
+      <p class="lede" data-i18n="profile.p1">Soy QA Automation Engineer e Ingeniero de Sistemas, con más de 2 años automatizando pruebas E2E, de regresión y de API en aplicaciones web. Trabajo con Selenium WebDriver, Java, Serenity BDD y Cucumber, aplicando Page Object Model y llevando las suites a pipelines CI/CD.</p>
+      <p data-i18n="profile.p2">Me muevo bien en equipos Scrum y Kanban, con Jira, Azure DevOps y TestRail. Cuando encuentro un defecto, lo documento para que se pueda reproducir a la primera: pasos, evidencia y resultado esperado contra el real.</p>
+    </div>
+    <figure class="profile-figure reveal">
+      <img src="assets/img/hero-ending.jpg" alt="" width="1276" height="720" loading="lazy" decoding="async">
+      <figcaption class="mono chip" data-i18n="profile.fig">estado final: 0 ruido</figcaption>
+    </figure>
+    <ul class="facts reveal" role="list">
+      <li><strong class="display">2+</strong><span data-i18n="facts.years">años automatizando pruebas</span></li>
+      <li><strong class="display">E2E · API · SQL</strong><span data-i18n="facts.layers">tres capas cubiertas</span></li>
+      <li><strong class="display">B1 → B2</strong><span data-i18n="facts.english">inglés técnico, en progreso</span></li>
+      <li><strong class="display" data-i18n="facts.remoteT">Remoto</strong><span data-i18n="facts.remote">desde Colombia</span></li>
+    </ul>
+  </div>
+</section>
+
+<div class="scanline" aria-hidden="true"><span></span></div>
+
+<!-- ===== 02 CAPAS ===== -->
+<section class="section layers" id="capas">
+  <div class="wrap">
+    <div class="section-head reveal center">
+      <p class="eyebrow mono"><span>02</span> <span data-i18n="layers.eyebrow">Tres capas de señal</span></p>
+      <h2 class="display h2" data-i18n="layers.title">Un bug puede esconderse en cualquier capa. Las reviso todas.</h2>
+    </div>
+    <div class="layer-grid">
+      <article class="layer reveal">
+        <div class="layer-img"><img src="assets/img/layer-ui.jpg" alt="" width="1200" height="900" loading="lazy" decoding="async"></div>
+        <p class="layer-tag mono">01 / UI</p>
+        <h3 class="display h3" data-i18n="layers.ui.t">E2E que no se rompen solos</h3>
+        <p data-i18n="layers.ui.p">Escenarios Gherkin que el negocio puede leer, Page Object Model y esperas explícitas, para que la suite falle solo cuando algo está roto de verdad.</p>
+        <ul class="chips" role="list"><li>Selenium WebDriver</li><li>Serenity BDD</li><li>Cucumber</li><li>Java</li></ul>
+      </article>
+      <article class="layer reveal">
+        <div class="layer-img"><img src="assets/img/layer-api.jpg" alt="" width="1200" height="900" loading="lazy" decoding="async"></div>
+        <p class="layer-tag mono">02 / API</p>
+        <h3 class="display h3" data-i18n="layers.api.t">Contratos verificados</h3>
+        <p data-i18n="layers.api.p">Valido endpoints REST con Postman: GET, POST, PUT y DELETE, códigos HTTP y estructura JSON. Si el contrato cambia sin aviso, lo encuentro.</p>
+        <ul class="chips" role="list"><li>Postman</li><li>REST</li><li>JSON</li><li>HTTP</li></ul>
+      </article>
+      <article class="layer reveal">
+        <div class="layer-img"><img src="assets/img/layer-data.jpg" alt="" width="1200" height="900" loading="lazy" decoding="async"></div>
+        <p class="layer-tag mono">03 / SQL</p>
+        <h3 class="display h3" data-i18n="layers.data.t">La verdad está en la base de datos</h3>
+        <p data-i18n="layers.data.p">Consultas SQL con JOIN y GROUP BY para confirmar que lo que muestra la pantalla es lo que de verdad quedó guardado.</p>
+        <ul class="chips" role="list"><li>SQL</li><li>JOIN</li><li>GROUP BY</li><li data-i18n="layers.data.chip">Integridad</li></ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 03 SUITE (interactive moment) ===== -->
+<section class="section suite" id="suite">
+  <div class="wrap suite-grid">
+    <div class="suite-copy reveal">
+      <p class="eyebrow mono"><span>03</span> <span data-i18n="suite.eyebrow">Pruébalo tú</span></p>
+      <h2 class="display h2" data-i18n="suite.title">Mantén presionado para ejecutar la suite.</h2>
+      <p class="lede" data-i18n="suite.p">Así se ve un ciclo de regresión automatizado: cada paso se valida solo y el defecto aparece antes de llegar a producción.</p>
+      <button type="button" class="hold" id="hold" aria-describedby="hold-hint">
+        <svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="54" class="hold-track"/><circle cx="60" cy="60" r="54" class="hold-fill"/></svg>
+        <span class="hold-label"><span class="hold-play" aria-hidden="true"></span><span data-i18n="suite.btn">Mantén para ejecutar</span></span>
+      </button>
+      <p class="hint mono" id="hold-hint" data-i18n="suite.hint">Mantén el clic, el dedo o la barra espaciadora.</p>
+    </div>
+
+    <div class="console reveal" id="console" aria-live="polite">
+      <div class="console-bar mono"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span>checkout.feature</span><span class="console-tag" data-i18n="suite.sim">simulación</span></div>
+      <ol class="console-body mono" role="list">
+        <li class="ln kw"><b>Feature:</b> <span data-i18n="g.feature">Checkout de la tienda</span></li>
+        <li class="ln kw ind1"><b>Scenario:</b> <span data-i18n="g.s1">Compra con tarjeta válida</span></li>
+        <li class="ln step ind2"><b>Given</b> <span data-i18n="g.s1a">el usuario inició sesión</span><i class="st" aria-hidden="true"></i></li>
+        <li class="ln step ind2"><b>When</b> <span data-i18n="g.s1b">agrega un producto al carrito</span><i class="st" aria-hidden="true"></i></li>
+        <li class="ln step ind2"><b>And</b> <span data-i18n="g.s1c">paga con una tarjeta válida</span><i class="st" aria-hidden="true"></i></li>
+        <li class="ln step ind2"><b>Then</b> <span data-i18n="g.s1d">ve la confirmación del pedido</span><i class="st" aria-hidden="true"></i></li>
+        <li class="ln kw ind1"><b>Scenario:</b> <span data-i18n="g.s2">Total con cupón de descuento</span></li>
+        <li class="ln step ind2"><b>Given</b> <span data-i18n="g.s2a">el carrito tiene 2 productos</span><i class="st" aria-hidden="true"></i></li>
+        <li class="ln step ind2"><b>When</b> <span data-i18n="g.s2b">aplica el cupón BIENVENIDA10 y recarga</span><i class="st" aria-hidden="true"></i></li>
+        <li class="ln step ind2 bad"><b>Then</b> <span data-i18n="g.s2c">el total refleja el 10% de descuento</span><i class="st" aria-hidden="true"></i></li>
+      </ol>
+      <div class="bug" id="bug">
+        <p class="bug-head mono"><span class="bug-dot" aria-hidden="true"></span><span>BUG-142</span><span class="bug-prio" data-i18n="bug.prio">Prioridad alta</span></p>
+        <p class="bug-title" data-i18n="bug.title">El cupón se aplica dos veces al recargar el carrito.</p>
+        <dl class="bug-grid">
+          <div><dt class="mono" data-i18n="bug.exp">Esperado</dt><dd data-i18n="bug.expv">10% de descuento</dd></div>
+          <div><dt class="mono" data-i18n="bug.act">Real</dt><dd data-i18n="bug.actv">20% de descuento</dd></div>
+          <div><dt class="mono" data-i18n="bug.ev">Evidencia</dt><dd data-i18n="bug.evv">Captura, log de red y pasos</dd></div>
+        </dl>
+      </div>
+      <p class="console-foot mono" id="console-foot"><span data-i18n="suite.idle">Listo para ejecutar</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 04 EXPERIENCIA ===== -->
+<section class="section experience" id="experiencia">
+  <div class="wrap exp-grid">
+    <div class="section-head reveal sticky-head">
+      <p class="eyebrow mono"><span>04</span> <span data-i18n="exp.eyebrow">Experiencia</span></p>
+      <h2 class="display h2" data-i18n="exp.title">Dónde lo he puesto en práctica.</h2>
+      <a class="btn btn-ghost cv-link" href="assets/cv/Carlos-Rios-CV-ES.pdf" download data-i18n="cta.cvFull">Descargar CV completo</a>
+    </div>
+    <div class="timeline" id="timeline">
+      <div class="tl-line" aria-hidden="true"><span class="tl-draw"></span></div>
+
+      <article class="role reveal">
+        <span class="node" aria-hidden="true"></span>
+        <p class="role-date mono" data-i18n="exp.r1.date">Nov 2024 – Jun 2026 · Remoto, Colombia</p>
+        <h3 class="display h3">QA Automation Engineer</h3>
+        <p class="role-org" data-i18n="exp.r1.org">Proyecto independiente de automatización de pruebas, trabajando directamente con un Senior QA Automation Engineer.</p>
+        <ul class="role-list" data-i18n-list="exp.r1.items">
+          <li>Automaticé escenarios E2E de regresión con Selenium WebDriver, Java, Serenity BDD y Cucumber, reduciendo el esfuerzo de regresión manual en cada ciclo de release.</li>
+          <li>Estabilicé la suite con Page Object Model y esperas explícitas, bajando los falsos fallos para que el verde volviera a ser confiable.</li>
+          <li>Detecté defectos importantes antes de producción con pruebas smoke, de regresión y de integración.</li>
+          <li>Validé endpoints REST con Postman (métodos HTTP, códigos de estado y JSON) y encontré inconsistencias de contrato.</li>
+          <li>Verifiqué la integridad de datos con consultas SQL (JOIN, GROUP BY) sobre procesos de negocio.</li>
+          <li>Documenté defectos en Jira con pasos, evidencia y esperado contra real, acortando el ida y vuelta con desarrollo.</li>
+          <li>Integré las suites en pipelines CI/CD para tener feedback automático en cada ejecución.</li>
+          <li>Aceleré el diseño de escenarios Gherkin con asistentes de IA, revisando a mano cada resultado.</li>
+        </ul>
+      </article>
+
+      <article class="role reveal">
+        <span class="node" aria-hidden="true"></span>
+        <p class="role-date mono" data-i18n="exp.r2.date">Oct 2023 – Sep 2024 · Cartago, Colombia</p>
+        <h3 class="display h3" data-i18n="exp.r2.title">QA Tester Freelance</h3>
+        <p class="role-org" data-i18n="exp.r2.org">Proyectos colaborativos.</p>
+        <ul class="role-list" data-i18n-list="exp.r2.items">
+          <li>Automaticé flujos E2E con Selenium, Serenity BDD y Cucumber en varios proyectos, reduciendo la prueba manual en cada entrega.</li>
+          <li>Escribí escenarios Gherkin alineados a los requisitos funcionales para cubrir los criterios de aceptación.</li>
+          <li>Validé componentes dinámicos (filtros, tablas, cálculos) y flujos de punta a punta, encontrando defectos antes de cada entrega.</li>
+          <li>Reporté incidencias en Jira con análisis de impacto y prioridad.</li>
+          <li>Mantuve la trazabilidad de los casos de prueba en Excel y TestRail, y ejecuté las pruebas automatizadas en pipelines CI/CD.</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 05 FRAMEWORK ===== -->
+<section class="section framework" id="framework">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow mono"><span>05</span> <span data-i18n="fw.eyebrow">Cómo construyo un framework</span></p>
+      <h2 class="display h2" data-i18n="fw.title">Una arquitectura que cualquiera del equipo puede leer.</h2>
+      <p class="lede" data-i18n="fw.p">Cada capa tiene un solo trabajo. Si cambia la interfaz, se ajusta un Page Object y no cien pruebas.</p>
+    </div>
+    <ol class="flow reveal" role="list">
+      <li class="flow-node"><span class="mono flow-n">.feature</span><h3 class="display h4">Gherkin</h3><p data-i18n="fw.n1">El comportamiento en lenguaje de negocio.</p></li>
+      <li class="flow-node"><span class="mono flow-n">Steps</span><h3 class="display h4">Java</h3><p data-i18n="fw.n2">Traduce cada paso a acciones.</p></li>
+      <li class="flow-node"><span class="mono flow-n">POM</span><h3 class="display h4">Page Objects</h3><p data-i18n="fw.n3">Selectores y esperas en un solo lugar.</p></li>
+      <li class="flow-node"><span class="mono flow-n">Driver</span><h3 class="display h4">WebDriver · REST</h3><p data-i18n="fw.n4">Habla con el navegador y con la API.</p></li>
+      <li class="flow-node"><span class="mono flow-n">Report</span><h3 class="display h4">Serenity</h3><p data-i18n="fw.n5">Evidencia que cualquiera entiende.</p></li>
+      <li class="flow-node accent-node"><span class="mono flow-n">CI/CD</span><h3 class="display h4">Pipeline</h3><p data-i18n="fw.n6">Corre solo y avisa en minutos.</p></li>
+    </ol>
+    <div class="fw-cta reveal">
+      <a class="btn btn-ghost" href="https://github.com/CarlosRios-dev" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true" class="ico"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.33-1.29-1.69-1.29-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.56-.29-5.25-1.28-5.25-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.7 5.39-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg>
+        <span data-i18n="fw.cta">Ver mi código en GitHub</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 06 STACK ===== -->
+<section class="section stack" id="stack">
+  <div class="wrap">
+    <div class="section-head reveal center">
+      <p class="eyebrow mono"><span>06</span> <span data-i18n="stack.eyebrow">Stack</span></p>
+      <h2 class="display h2" data-i18n="stack.title">Lo que domino y lo que estoy sumando.</h2>
+    </div>
+    <div class="stack-grid">
+      <div class="stack-card main reveal">
+        <p class="mono level"><span class="lv lv-3" aria-hidden="true"></span><span data-i18n="stack.l3">Dominio</span></p>
+        <h3 class="display h4" data-i18n="stack.web">Automatización web</h3>
+        <ul class="chips" role="list"><li>Selenium WebDriver</li><li>Java</li><li>Serenity BDD</li><li>Cucumber</li><li>Gherkin</li><li>Page Object Model</li></ul>
+      </div>
+      <div class="stack-card reveal">
+        <p class="mono level"><span class="lv lv-3" aria-hidden="true"></span><span data-i18n="stack.l3">Dominio</span></p>
+        <h3 class="display h4" data-i18n="stack.api">Pruebas de API</h3>
+        <ul class="chips" role="list"><li>Postman</li><li>REST</li><li>JSON</li><li>GET · POST · PUT · DELETE</li><li data-i18n="stack.codes">Códigos de estado</li></ul>
+      </div>
+      <div class="stack-card reveal">
+        <p class="mono level"><span class="lv lv-3" aria-hidden="true"></span><span data-i18n="stack.l3">Dominio</span></p>
+        <h3 class="display h4" data-i18n="stack.db">Bases de datos</h3>
+        <ul class="chips" role="list"><li>SQL</li><li>SELECT · JOIN</li><li>GROUP BY · ORDER BY</li><li data-i18n="stack.integrity">Integridad de datos</li></ul>
+      </div>
+      <div class="stack-card reveal">
+        <p class="mono level"><span class="lv lv-3" aria-hidden="true"></span><span data-i18n="stack.l3">Dominio</span></p>
+        <h3 class="display h4" data-i18n="stack.mgmt">Gestión y CI/CD</h3>
+        <ul class="chips" role="list"><li>Jira</li><li>TestRail</li><li>Azure DevOps</li><li>Git</li><li>Pipelines CI/CD</li><li>Excel</li></ul>
+      </div>
+      <div class="stack-card reveal">
+        <p class="mono level"><span class="lv lv-2" aria-hidden="true"></span><span data-i18n="stack.l2">Conocimiento básico</span></p>
+        <h3 class="display h4" data-i18n="stack.next">Sumando ahora</h3>
+        <ul class="chips" role="list"><li>Playwright</li><li>Cypress</li><li>Selenide</li><li>JavaScript</li><li>Python</li></ul>
+      </div>
+      <div class="stack-card reveal">
+        <p class="mono level"><span class="lv lv-3" aria-hidden="true"></span><span data-i18n="stack.l3">Dominio</span></p>
+        <h3 class="display h4" data-i18n="stack.method">Cómo trabajo</h3>
+        <ul class="chips" role="list"><li>Agile</li><li>Scrum</li><li>Kanban</li><li>BDD</li><li>Smoke</li><li data-i18n="stack.reg">Regresión</li><li data-i18n="stack.int">Integración</li><li>E2E</li></ul>
+      </div>
+    </div>
+
+    <div class="edu reveal">
+      <div class="edu-item">
+        <p class="mono eyebrow-sm" data-i18n="edu.k">Formación</p>
+        <h3 class="display h4" data-i18n="edu.t">Ingeniería de Sistemas</h3>
+        <p data-i18n="edu.p">Corporación de Estudios Tecnológicos del Norte del Valle · Cartago, Valle del Cauca</p>
+      </div>
+      <div class="edu-item">
+        <p class="mono eyebrow-sm" data-i18n="lang.k">Idiomas</p>
+        <div class="meter"><span data-i18n="lang.es">Español</span><span class="bar" aria-hidden="true"><i style="--v:1"></i></span><span class="mono" data-i18n="lang.native">Nativo</span></div>
+        <div class="meter"><span data-i18n="lang.en">Inglés</span><span class="bar" aria-hidden="true"><i style="--v:.6"></i><i class="goal" style="--v:.75"></i></span><span class="mono">B1 → B2</span></div>
+      </div>
+      <div class="edu-item">
+        <p class="mono eyebrow-sm" data-i18n="ai.k">IA aplicada a QA</p>
+        <p data-i18n="ai.p">Genero y optimizo casos de prueba y escenarios Gherkin con asistentes de IA. Cada resultado pasa por mi revisión antes de entrar a la suite.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 07 FAQ ===== -->
+<section class="section faq" id="faq">
+  <div class="wrap faq-grid">
+    <div class="section-head reveal">
+      <p class="eyebrow mono"><span>07</span> <span data-i18n="faq.eyebrow">Preguntas frecuentes</span></p>
+      <h2 class="display h2" data-i18n="faq.title">Lo que suelen preguntarme antes de una entrevista.</h2>
+    </div>
+    <div class="faq-list reveal">
+      <details><summary data-i18n="faq.q1">¿Trabajas de forma remota?</summary><p data-i18n="faq.a1">Sí. Mi experiencia más reciente fue remota desde Colombia, trabajando de cerca con un Senior QA Automation Engineer y con el equipo de desarrollo.</p></details>
+      <details><summary data-i18n="faq.q2">¿Qué nivel de inglés tienes?</summary><p data-i18n="faq.a2">B1 técnico: leo documentación, escribo reportes de defectos y participo en reuniones en inglés. Estoy avanzando hacia B2.</p></details>
+      <details><summary data-i18n="faq.q3">¿Cómo manejas las pruebas inestables?</summary><p data-i18n="faq.a3">Las trato como un defecto más. Uso Page Object Model y esperas explícitas en lugar de pausas fijas, y cuando una prueba falla investigo si se rompió el producto o la prueba antes de volver a ejecutarla.</p></details>
+      <details><summary data-i18n="faq.q4">¿Puedes trabajar con Playwright o Cypress?</summary><p data-i18n="faq.a4">Mi fuerte es Selenium WebDriver con Java. Tengo bases en Playwright, Cypress y Selenide, y los conceptos de fondo (selectores, esperas, Page Objects, CI) se trasladan directo.</p></details>
+      <details><summary data-i18n="faq.q5">¿Usas IA en tu trabajo?</summary><p data-i18n="faq.a5">Sí, para acelerar la generación de casos de prueba y escenarios Gherkin. Reviso a mano cada resultado antes de que entre a la suite.</p></details>
+      <details><summary data-i18n="faq.q6">¿Cómo reportas un bug?</summary><p data-i18n="faq.a6">Con pasos para reproducirlo, evidencia, resultado esperado contra el real y una prioridad según el impacto. La meta es que el desarrollador no tenga que preguntarme nada.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 08 CONTACTO (the one CTA) ===== -->
+<section class="section contact" id="contacto">
+  <div class="wrap contact-grid">
+    <div class="contact-copy reveal">
+      <p class="eyebrow mono"><span>08</span> <span data-i18n="contact.eyebrow">Contacto</span></p>
+      <h2 class="display h2" data-i18n="contact.title">¿Tu equipo necesita un verde en el que pueda confiar?</h2>
+      <p class="lede" data-i18n="contact.p">Cuéntame del proyecto o del puesto y te respondo por correo.</p>
+      <ul class="links" role="list">
+        <li><button type="button" class="link-row" id="copy-email"><span class="mono link-k">Email</span><span class="link-v">carlosriosdev@gmail.com</span><span class="link-a mono" data-i18n="contact.copy">Copiar</span></button></li>
+        <li><a class="link-row" href="https://www.linkedin.com/in/carlos-rios-dev" target="_blank" rel="noopener"><span class="mono link-k">LinkedIn</span><span class="link-v">in/carlos-rios-dev</span><span class="link-a mono" aria-hidden="true">↗</span></a></li>
+        <li><a class="link-row" href="https://github.com/CarlosRios-dev" target="_blank" rel="noopener"><span class="mono link-k">GitHub</span><span class="link-v">CarlosRios-dev</span><span class="link-a mono" aria-hidden="true">↗</span></a></li>
+        <li><a class="link-row" href="assets/cv/Carlos-Rios-CV-ES.pdf" download data-cv><span class="mono link-k">CV</span><span class="link-v" data-i18n="contact.cvv">PDF en español</span><span class="link-a mono" aria-hidden="true">↓</span></a></li>
+        <li><a class="link-row" href="assets/cv/Carlos-Rios-CV-EN.pdf" download><span class="mono link-k">CV</span><span class="link-v" data-i18n="contact.cvv2">PDF in English</span><span class="link-a mono" aria-hidden="true">↓</span></a></li>
+      </ul>
+    </div>
+
+    <form class="form reveal" id="form" novalidate>
+      <div class="field"><label for="f-name" data-i18n="form.name">Nombre</label><input id="f-name" name="name" autocomplete="name" required data-i18n-ph="form.nameph" placeholder="Tu nombre"></div>
+      <div class="field"><label for="f-email" data-i18n="form.email">Correo</label><input id="f-email" name="email" type="email" autocomplete="email" required data-i18n-ph="form.emailph" placeholder="tu@empresa.com"></div>
+      <div class="field"><label for="f-company" data-i18n="form.company">Empresa (opcional)</label><input id="f-company" name="company" autocomplete="organization" data-i18n-ph="form.companyph" placeholder="Nombre de la empresa"></div>
+      <div class="field"><label for="f-msg" data-i18n="form.msg">Mensaje</label><textarea id="f-msg" name="message" rows="5" required data-i18n-ph="form.msgph" placeholder="Cuéntame del puesto o del proyecto."></textarea></div>
+      <p class="form-error mono" id="form-error" role="alert"></p>
+      <button class="btn btn-accent btn-block" type="submit" data-i18n="form.send">Enviar mensaje</button>
+      <p class="form-note" data-i18n="form.note">El botón abre tu app de correo con el mensaje listo para enviar a carlosriosdev@gmail.com.</p>
+      <div class="form-ok" id="form-ok" role="status" tabindex="-1">
+        <p class="display h4" data-i18n="form.okT">Tu mensaje está listo.</p>
+        <p data-i18n="form.okP">Se abrió tu app de correo con todo escrito. Solo dale enviar. Si no se abrió, escríbeme directo a carlosriosdev@gmail.com.</p>
+      </div>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap footer-row">
+    <p>© 2026 Carlos Andrés Ríos Pérez</p>
+    <p class="mono" data-i18n="footer.ai">Visuales generados con IA. Código escrito a mano.</p>
+    <a href="#top" class="mono" data-i18n="footer.top">Volver arriba ↑</a>
+  </div>
+</footer>
+
+<div class="toast mono" id="toast" role="status" aria-live="polite"></div>
+
+<script src="assets/i18n.js"></script>
+<script src="assets/site.js"></script>
+</body>
+</html>
