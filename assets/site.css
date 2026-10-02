@@ -92,7 +92,7 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
 @media (max-width:420px){.brand span{display:none}}
 
 /* ============ Hero ============ */
-.hero{position:relative;height:600vh}
+.hero{position:relative;height:320vh}
 .stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:var(--canvas)}
 .poster,#hero-video{position:absolute;inset:0;width:100%;height:100%}
 .poster{background-size:cover;background-position:center}
@@ -101,26 +101,22 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
 .stage.video-failed #hero-video{display:none}
 .scrim{position:absolute;inset:0;pointer-events:none;background:
   radial-gradient(ellipse 120% 90% at 50% 45%,rgba(8,9,22,0) 35%,rgba(8,9,22,.62) 100%),
-  linear-gradient(90deg,rgba(8,9,22,.5) 0%,rgba(8,9,22,.22) 38%,rgba(8,9,22,0) 60%),
   linear-gradient(to bottom,rgba(8,9,22,.55),rgba(8,9,22,0) 18%,rgba(8,9,22,0) 82%,rgba(11,13,31,.9))}
 
-.band{position:absolute;isolation:isolate;opacity:0;text-shadow:var(--tshadow);pointer-events:none;--k:0}
+/* captions: centered; each scrim is a soft ellipse that reaches 0 before the box edge (closest-side), so it never shows a hard rectangle */
+.band{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(92vw,1000px);text-align:center;isolation:isolate;opacity:0;text-shadow:var(--tshadow);pointer-events:none;--k:0;--sa:.8}
 .band.live{pointer-events:auto}
-.band::before{content:"";position:absolute;inset:-30% -24%;z-index:-1;pointer-events:none;opacity:calc(.35 + .65*var(--k,1));background:radial-gradient(ellipse 70% 64% at 46% 50%,rgba(5,6,16,var(--sa,.8)) 0%,rgba(5,6,16,calc(var(--sa,.8)*.9)) 42%,rgba(5,6,16,calc(var(--sa,.8)*.55)) 62%,rgba(5,6,16,0) 82%)}
-.band-1,.band-2,.band-3{left:clamp(20px,6vw,96px);width:min(48vw,700px)}
-.band-1,.band-2{top:52%;transform:translateY(-42%)}
-.band-3{bottom:9vh}
-.band-1{--sa:.86}
-.band-1::before{background:radial-gradient(ellipse 74% 70% at 52% 58%,rgba(5,6,16,var(--sa)) 0%,rgba(5,6,16,calc(var(--sa)*.92)) 46%,rgba(5,6,16,calc(var(--sa)*.6)) 66%,rgba(5,6,16,0) 86%)}
-.band-2{--sa:.84}
-.band-3{--sa:.86}
-.band-4{left:50%;top:14%;transform:translateX(-50%);width:min(92vw,980px);text-align:center;--sa:.86}
-.band-4::before{inset:-26% -10% -34%;background:radial-gradient(ellipse 62% 62% at 50% 45%,rgba(5,6,16,var(--sa)) 0%,rgba(5,6,16,calc(var(--sa)*.88)) 40%,rgba(5,6,16,calc(var(--sa)*.5)) 62%,rgba(5,6,16,0) 80%)}
+.band::before{content:"";position:absolute;inset:-60% -30%;z-index:-1;pointer-events:none;opacity:calc(.4 + .6*var(--k,1));background:radial-gradient(closest-side,rgba(5,6,16,var(--sa)) 0%,rgba(5,6,16,var(--sa)) 52%,rgba(5,6,16,calc(var(--sa)*.62)) 74%,rgba(5,6,16,calc(var(--sa)*.22)) 90%,rgba(5,6,16,0) 100%)}
+.band-1{--sa:.9}
+.band-2{--sa:.92}
+.band-3{--sa:.9}
 .band .kicker{display:inline-block;margin-bottom:22px}
-.band .sub{margin-top:20px;font-size:clamp(1.05rem,1.4vw,1.3rem);color:var(--text-primary);max-width:34ch}
-.band-4 .sub{margin-inline:auto;max-width:none;color:var(--signal)}
+.band .split{max-width:18ch;margin-inline:auto}
+.band-2 .split{max-width:none}
+.band .sub{margin:20px auto 0;font-size:clamp(1.05rem,1.4vw,1.3rem);color:var(--text-primary);max-width:40ch}
+.band-3 .sub{max-width:none;color:var(--signal)}
 .cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
-.band-4 .cta-row{justify-content:center}
+.band .cta-row{justify-content:center}
 .chip{background:rgba(8,9,22,.55);border:1px solid rgba(127,231,255,.22);border-radius:10px;backdrop-filter:blur(10px);text-shadow:0 1px 3px rgba(5,5,10,.85);padding:7px 12px;font-size:.78rem;color:var(--text-primary)}
 
 /* split text */
@@ -135,8 +131,6 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
 .fx-grid .c{--kc:clamp(0,(var(--k,0) - var(--th,0))*3,1);opacity:var(--kc);transform:translateX(calc((1 - var(--kc))*var(--jx,0px)))}
 .fx-grid .sub{opacity:clamp(0,(var(--k,0) - .55)*3,1);transform:translateY(calc((1 - clamp(0,(var(--k,0) - .55)*3,1))*12px))}
 /* (f) drift down: band 3, following the scan line down */
-.fx-drift .w{--kc:clamp(0,(var(--k,0) - var(--th,0))*2.8,1);opacity:var(--kc);transform:translateY(calc((1 - var(--kc))*-28px))}
-.fx-drift .sub{opacity:clamp(0,(var(--k,0) - .5)*3,1);transform:translateY(calc((1 - clamp(0,(var(--k,0) - .5)*3,1))*-14px))}
 /* (e) rise into staged settle: band 4 */
 .fx-rise .w{--kc:clamp(0,(var(--k,0) - var(--th,0))*3,1);opacity:var(--kc);transform:translateY(calc((1 - var(--kc))*34px))}
 .fx-rise .sub{--ks:clamp(0,(var(--k,0) - .62)*4,1);opacity:var(--ks);transform:translateY(calc((1 - var(--ks))*14px))}
@@ -164,7 +158,9 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
   .poster{background-image:url("img/hero-static.jpg");background-position:60% center}
   #hero-video,.band,.loader,.hud{display:none}
   .scrim{background:linear-gradient(to bottom,rgba(8,9,22,.55) 0%,rgba(8,9,22,.25) 30%,rgba(8,9,22,.82) 62%,rgba(11,13,31,1) 100%)}
-  .static-copy{display:block;position:relative;padding:120px clamp(16px,5vw,40px) 64px;text-shadow:var(--tshadow);max-width:720px}
+  .static-copy{display:block;position:relative;padding:120px clamp(16px,5vw,40px) 64px;text-shadow:var(--tshadow);max-width:720px;margin-inline:auto;text-align:center}
+  .static-copy .sub{margin-inline:auto}
+  .static-copy .cta-row{justify-content:center}
   .static-copy .kicker{display:inline-block;margin-bottom:18px}
   .static-copy .xl{font-size:clamp(2.1rem,8.4vw,3.6rem)}
   .static-copy .sub{margin-top:18px;font-size:1.08rem;max-width:36ch}

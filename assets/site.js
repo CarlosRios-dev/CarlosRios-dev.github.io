@@ -25,14 +25,16 @@
     el.textContent = '';
     const sr = document.createElement('span');
     sr.className = 'sr';
-    sr.textContent = text;
+    sr.textContent = text.replace(/\|/g, ' ');
     const vis = document.createElement('span');
     vis.className = 'vis';
     vis.setAttribute('aria-hidden', 'true');
-    const words = text.split(' ');
-    const totalChars = text.replace(/ /g, '').length;
+    // "|" in the copy marks a designed line break
+    const words = text.replace(/\|/g, ' | ').split(/ +/).filter(Boolean);
+    const totalChars = text.replace(/[ |]/g, '').length;
     let ci = 0;
     words.forEach((word, wi) => {
+      if (word === '|') { vis.appendChild(document.createElement('br')); return; }
       const w = document.createElement('span');
       w.className = 'w';
       if (fx === 'fx-drift' || fx === 'fx-rise') {
@@ -106,7 +108,7 @@
   }));
 
   const VIDEO_URL = 'assets/hero-scrub.mp4';
-  const VIDEO_BYTES = 4814237;
+  const VIDEO_BYTES = 9222158;
   const POSTER_URL = 'assets/img/hero-poster.jpg';
   const ENDING_URL = 'assets/img/hero-ending.jpg';
 
