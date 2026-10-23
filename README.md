@@ -24,4 +24,4 @@ python -m http.server 8080
 
 Luego abre http://localhost:8080. Si abres `index.html` con doble clic, verás la versión con imagen fija del hero: el navegador bloquea la carga del video desde archivos locales.
 
-Visuales generados con IA. Código escrito a mano.
+
