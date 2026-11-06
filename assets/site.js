@@ -90,6 +90,7 @@
     bands.forEach(b => { b.op = -1; b.k = -1; });
     if (scrubOn) updateCaptions(shown);
     suite.relabel();
+    menuBtn.setAttribute('aria-label', t(document.documentElement.classList.contains('menu-open') ? 'menu.close' : 'menu.open'));
     store.set('lang', lang);
   }
 
@@ -179,7 +180,7 @@
   function tick(now) {
     const dt = Math.min(100, now - (lastTick || now));
     lastTick = now;
-    const kk = 0.14;
+    const kk = window.__lenis ? 0.24 : 0.14;
     shown += (target - shown) * (1 - Math.pow(1 - kk, dt / 16.667));
     if (Math.abs(target - shown) < 0.0005) {
       shown = target; rafId = null; lastTick = 0;
@@ -283,6 +284,7 @@
     if (scrubOn) return;
     scrubOn = true;
     initHeroOnce();
+    if (posterState) posterLayer.style.backgroundImage = `url('${posterState === 'end' ? ENDING_URL : POSTER_URL}')`;
     addEventListener('scroll', onScroll, { passive: true });
     bands.forEach(b => { b.op = -1; b.k = -1; b.live = null; });
     target = shown = heroProgress();
@@ -293,6 +295,7 @@
   function disableScrub() {
     if (!scrubOn) return;
     scrubOn = false;
+    posterLayer.style.backgroundImage = '';   // the CSS still (no scan line) takes over
     removeEventListener('scroll', onScroll);
     if (rafId !== null) { cancelAnimationFrame(rafId); rafId = null; lastTick = 0; }
   }
@@ -386,9 +389,15 @@
   /* ================= Scroll-linked page details ================= */
   const nav = $('.nav');
   const timeline = $('#timeline');
-  let navSolid = null, tlDraw = -1, pageRaf = null;
+  let navSolid = null, tlDraw = -1, pageRaf = null, lastExit = '';
+  const visualLayer = $('.visual', hero);
   function pageScroll() {
     pageRaf = null;
+    // the hero dims as it leaves, so the page takes over without a seam
+    const hb = hero.getBoundingClientRect().bottom;
+    const exit = clamp(hb / innerHeight, 0, 1);
+    const ev = (0.35 + 0.65 * exit).toFixed(3);
+    if (ev !== lastExit) { lastExit = ev; stage.style.setProperty('--exit', ev); }
     const solid = hero.getBoundingClientRect().bottom < 80;
     if (solid !== navSolid) { navSolid = solid; nav.classList.toggle('solid', solid); }
     if (!RM.matches && timeline) {
@@ -569,6 +578,49 @@
     if (hidden) env.stop(); else env.start();
   });
 
+  /* ================= Mobile menu ================= */
+  const menuBtn = $('#menu-btn');
+  const menu = $('#menu');
+  function setMenu(open) {
+    document.documentElement.classList.toggle('menu-open', open);
+    menuBtn.setAttribute('aria-expanded', String(open));
+    menuBtn.setAttribute('aria-label', t(open ? 'menu.close' : 'menu.open'));
+    menu.setAttribute('aria-hidden', String(!open));
+    if (window.__lenis) open ? window.__lenis.stop() : window.__lenis.start();
+    if (open) { const first = $('a', menu); first && first.focus({ preventScroll: true }); }
+  }
+  menuBtn.addEventListener('click', () => setMenu(!document.documentElement.classList.contains('menu-open')));
+  $$('a', menu).forEach(a => a.addEventListener('click', () => setMenu(false)));
+  addEventListener('keydown', e => { if (e.key === 'Escape' && document.documentElement.classList.contains('menu-open')) { setMenu(false); menuBtn.focus(); } });
+  matchMedia('(min-width: 981px)').addEventListener('change', e => { if (e.matches) setMenu(false); });
+
+  /* ================= Smooth scroll (desktop pointers only) ================= */
+  function startLenis() {
+    if (window.__lenis || typeof window.Lenis !== 'function') return;
+    if (RM.matches || !matchMedia('(pointer: fine)').matches) return;
+    const lenis = new window.Lenis({ duration: 1.15, easing: x => Math.min(1, 1.001 - Math.pow(2, -10 * x)), smoothWheel: true, anchors: { offset: 0 } });
+    window.__lenis = lenis;
+    const raf = time => { lenis.raf(time); requestAnimationFrame(raf); };
+    requestAnimationFrame(raf);
+  }
+  function stopLenis() {
+    if (!window.__lenis) return;
+    window.__lenis.destroy();
+    window.__lenis = null;
+  }
+  RM.addEventListener('change', e => (e.matches ? stopLenis() : startLenis()));
+  // in-page links glide through Lenis instead of jumping
+  document.addEventListener('click', e => {
+    const a = e.target.closest('a[href^="#"]');
+    if (!a || !window.__lenis) return;
+    const id = a.getAttribute('href');
+    const target = id === '#top' ? 0 : document.querySelector(id);
+    if (target === null) return;
+    e.preventDefault();
+    window.__lenis.scrollTo(target, { offset: 0 });
+    history.replaceState(null, '', id);
+  });
+
   /* ================= Boot ================= */
   const saved = store.get('lang');
   const initial = saved || ((navigator.language || 'es').toLowerCase().startsWith('es') ? 'es' : 'en');
@@ -578,4 +630,5 @@
   applyHeroMode();
   pageScroll();
   if (RM.matches) pinToFinalStates(); else env.start();
+  startLenis();
 })();

@@ -26,7 +26,10 @@
 
 /* ============ Base ============ */
 *,*::before,*::after{box-sizing:border-box}
-html{overflow-x:hidden;overflow-x:clip;scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+html{overflow-x:hidden;overflow-x:clip;scroll-behavior:smooth;-webkit-text-size-adjust:100%;font-size:clamp(15px,.22vw + 12.9px,19px)}
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+.lenis.lenis-stopped{overflow:hidden}
 body{margin:0;overflow-x:hidden;overflow-x:clip;background:var(--canvas);color:var(--text-primary);font:400 1.0625rem/1.65 var(--f-body);-webkit-font-smoothing:antialiased;animation:pageIn .9s var(--ease-out) both}
 @keyframes pageIn{from{opacity:0}to{opacity:1}}
 img,svg,video{display:block;max-width:100%}
@@ -93,15 +96,19 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
 
 /* ============ Hero ============ */
 .hero{position:relative;height:320vh}
-.stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:var(--canvas)}
+.stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
+/* the visual layer dissolves into the page environment: no hard edge, no second tone of dark */
+.visual{position:absolute;inset:0;pointer-events:none;opacity:var(--exit,1);
+  -webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 58%,rgba(0,0,0,.5) 74%,rgba(0,0,0,.12) 84%,transparent 90%);
+          mask-image:linear-gradient(to bottom,#000 0%,#000 58%,rgba(0,0,0,.5) 74%,rgba(0,0,0,.12) 84%,transparent 90%)}
 .poster,#hero-video{position:absolute;inset:0;width:100%;height:100%}
 .poster{background-size:cover;background-position:center}
 #hero-video{object-fit:cover;opacity:0;transition:opacity .8s var(--ease-out);will-change:transform;transform:translateZ(0)}
 .stage.video-ready #hero-video{opacity:1}
 .stage.video-failed #hero-video{display:none}
 .scrim{position:absolute;inset:0;pointer-events:none;background:
-  radial-gradient(ellipse 120% 90% at 50% 45%,rgba(8,9,22,0) 35%,rgba(8,9,22,.62) 100%),
-  linear-gradient(to bottom,rgba(8,9,22,.55),rgba(8,9,22,0) 18%,rgba(8,9,22,0) 82%,rgba(11,13,31,.9))}
+  radial-gradient(ellipse 120% 90% at 50% 45%,rgba(8,9,22,0) 35%,rgba(8,9,22,.55) 100%),
+  linear-gradient(to bottom,rgba(8,9,22,.55),rgba(8,9,22,0) 18%)}
 
 /* captions: centered; each scrim is a soft ellipse that reaches 0 before the box edge (closest-side), so it never shows a hard rectangle */
 .band{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(92vw,1000px);text-align:center;isolation:isolate;opacity:0;text-shadow:var(--tshadow);pointer-events:none;--k:0;--sa:.8}
@@ -144,7 +151,7 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
 .cue::after{content:"";display:block;width:1px;height:28px;margin:10px auto 0;background:linear-gradient(var(--signal),transparent);animation:cue 2.4s var(--ease-io) -.6s infinite}
 @keyframes cue{0%{transform:scaleY(0);transform-origin:top}45%{transform:scaleY(1);transform-origin:top}55%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
 .loader.gone{opacity:0}
-.hud{position:absolute;right:clamp(16px,3vw,36px);bottom:28px;display:flex;align-items:center;gap:8px;font-size:.72rem;color:var(--signal)}
+.hud{opacity:clamp(0,(var(--exit,1) - .7)*3.4,1);position:absolute;right:clamp(16px,3vw,36px);bottom:28px;display:flex;align-items:center;gap:8px;font-size:.72rem;color:var(--signal)}
 .hud-dot{width:6px;height:6px;border-radius:50%;background:var(--signal);box-shadow:0 0 10px var(--signal);animation:pulse 2.2s ease-in-out -1.1s infinite}
 @keyframes pulse{50%{opacity:.35}}
 @media (max-height:560px){.cue,.hud{display:none}}
@@ -154,27 +161,39 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
 /* The five static-hero gates (must match GATES in site.js exactly) */
 @media (max-width: 720px),(orientation: portrait) and (max-width: 1024px),(orientation: portrait) and (pointer: coarse),(orientation: landscape) and (pointer: coarse) and (max-height: 560px),(prefers-reduced-motion: reduce){
   .hero{height:auto}
-  .stage{position:relative;height:auto;min-height:100svh;display:flex;align-items:flex-end}
-  .poster{background-image:url("img/hero-static.jpg");background-position:60% center}
+  .stage{position:relative;height:auto;min-height:100vh;min-height:100svh;display:flex;flex-direction:column;justify-content:center;overflow:hidden}
+  /* designed still: calm night sky above for the words, the ordered grid below as the floor */
+  .poster{background-image:url("img/hero-mobile.jpg");background-image:image-set(url("img/hero-mobile-720.jpg") 1x,url("img/hero-mobile.jpg") 2x);background-position:center bottom;transform-origin:50% 80%;animation:breathe 26s var(--ease-io) -6s infinite alternate}
   #hero-video,.band,.loader,.hud{display:none}
-  .scrim{background:linear-gradient(to bottom,rgba(8,9,22,.55) 0%,rgba(8,9,22,.25) 30%,rgba(8,9,22,.82) 62%,rgba(11,13,31,1) 100%)}
-  .static-copy{display:block;position:relative;padding:120px clamp(16px,5vw,40px) 64px;text-shadow:var(--tshadow);max-width:720px;margin-inline:auto;text-align:center}
-  .static-copy .sub{margin-inline:auto}
+  .scrim{background:
+    radial-gradient(ellipse 90% 45% at 50% 40%,rgba(8,9,22,.55) 0%,rgba(8,9,22,0) 70%),
+    linear-gradient(to bottom,rgba(8,9,22,.6) 0%,rgba(8,9,22,0) 22%)}
+  .static-copy{display:block;position:relative;z-index:1;width:100%;max-width:720px;margin:0 auto;padding:clamp(84px,11svh,130px) clamp(20px,6vw,40px) clamp(190px,37svh,360px);text-shadow:var(--tshadow);text-align:center}
   .static-copy .cta-row{justify-content:center}
-  .static-copy .kicker{display:inline-block;margin-bottom:18px}
-  .static-copy .xl{font-size:clamp(2.1rem,8.4vw,3.6rem)}
-  .static-copy .sub{margin-top:18px;font-size:1.08rem;max-width:36ch}
+  .static-copy .kicker{display:inline-block;margin-bottom:20px}
+  .static-copy .xl{font-size:clamp(2.15rem,9.6vw,4rem);line-height:1.06}
+  .static-copy .sub{margin:20px auto 0;font-size:clamp(1.02rem,3.9vw,1.2rem);max-width:34ch;color:var(--text-primary)}
+}
+@keyframes breathe{from{transform:scale(1)}to{transform:scale(1.07)}}
+/* static hero on wide screens (landscape phones, reduced-motion desktops): the landscape still */
+@media (orientation: landscape) and (pointer: coarse) and (max-height: 560px),(prefers-reduced-motion: reduce) and (orientation: landscape){
+  .poster{background-image:url("img/hero-land.jpg");background-position:center bottom}
+  .static-copy{padding-top:84px;padding-bottom:14vh}
+  .static-copy .kicker{margin-bottom:12px}
+  .static-copy .xl{font-size:clamp(1.8rem,4.4vw,3rem)}
+  .static-copy .sub{margin-top:12px}
+  .static-copy .cta-row{margin-top:18px}
 }
 
 /* ============ Sections ============ */
-.section{position:relative;padding:clamp(88px,13vh,160px) 0}
-.wrap{max-width:1200px;margin:0 auto;padding:0 clamp(16px,4vw,40px)}
+.section{position:relative;padding:clamp(72px,5vw + 52px,168px) 0}
+.wrap{max-width:min(1240px,100%);margin:0 auto;padding:0 clamp(20px,5vw,40px)}
 .eyebrow{display:flex;align-items:center;gap:12px;font-size:.78rem;text-transform:uppercase;letter-spacing:.16em;color:var(--signal);margin-bottom:20px}
 .eyebrow span:first-child{color:var(--text-tertiary)}
 .eyebrow span:first-child::after{content:"";display:inline-block;width:28px;height:1px;margin-left:12px;vertical-align:middle;background:var(--line-strong)}
 .center{text-align:center}
 .center .eyebrow{justify-content:center}
-.section-head{margin-bottom:clamp(40px,6vh,64px)}
+.section-head{margin-bottom:clamp(32px,3vw + 20px,64px)}
 .section-head .h2{margin-bottom:18px}
 
 /* reveal choreography */
@@ -216,7 +235,7 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
 .chips li{font-family:var(--f-mono);font-size:.74rem;padding:6px 10px;border-radius:8px;border:1px solid var(--line);color:var(--text-primary);background:rgba(11,13,31,.45)}
 
 /* 03 suite */
-.suite{background:linear-gradient(180deg,transparent,rgba(15,18,41,.7) 20%,rgba(15,18,41,.7) 80%,transparent)}
+.suite{}
 .suite-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(32px,5vw,72px);align-items:center}
 .suite-copy .h2{margin-bottom:22px}
 .suite-copy .lede{color:var(--text-secondary)}
@@ -406,3 +425,70 @@ html.pinned .tl-draw{transform:none}
   .link-row{grid-template-columns:3.4em 1fr auto;gap:10px}
   .link-v{font-size:clamp(.86rem,3.9vw,1rem);overflow-wrap:normal;word-break:normal}
 }
+
+/* ============ Mobile menu ============ */
+.menu-btn{display:none;position:relative;width:44px;height:44px;border-radius:999px;border:1px solid var(--line-strong);background:rgba(11,13,31,.5);backdrop-filter:blur(8px);transition:border-color .3s var(--ease-out),background-color .3s var(--ease-out)}
+.menu-btn span{position:absolute;left:13px;right:13px;height:1.5px;border-radius:2px;background:var(--text-primary);transition:transform .45s var(--ease-out),top .45s var(--ease-out)}
+.menu-btn span:first-child{top:17px}
+.menu-btn span:last-child{top:25px}
+.menu-open .menu-btn{border-color:var(--signal)}
+.menu-open .menu-btn span:first-child{top:21px;transform:rotate(45deg)}
+.menu-open .menu-btn span:last-child{top:21px;transform:rotate(-45deg)}
+.menu{position:fixed;inset:0;z-index:45;display:flex;flex-direction:column;justify-content:space-between;padding:96px clamp(20px,6vw,40px) calc(28px + env(safe-area-inset-bottom));background:rgba(9,11,26,.92);backdrop-filter:blur(18px);opacity:0;visibility:hidden;transition:opacity .45s var(--ease-out),visibility 0s .45s}
+.menu-open .menu{opacity:1;visibility:visible;transition:opacity .45s var(--ease-out)}
+.menu-links{display:flex;flex-direction:column;gap:2px;overflow-y:auto}
+.menu-links a{display:flex;align-items:baseline;gap:16px;padding:12px 0;border-bottom:1px solid var(--line);font-family:var(--f-display);font-weight:600;font-size:clamp(1.5rem,6.5vw,2.2rem);letter-spacing:-.02em;opacity:0;transform:translateY(16px);transition:opacity .5s var(--ease-out),transform .5s var(--ease-out),color .3s var(--ease-out)}
+.menu-links a .mono{font-size:.75rem;font-weight:400;color:var(--signal);letter-spacing:.08em;min-width:2ch}
+.menu-links a:active,.menu-links a:hover{color:var(--signal)}
+.menu-open .menu-links a{opacity:1;transform:none}
+.menu-open .menu-links a:nth-child(1){transition-delay:.05s}.menu-open .menu-links a:nth-child(2){transition-delay:.09s}
+.menu-open .menu-links a:nth-child(3){transition-delay:.13s}.menu-open .menu-links a:nth-child(4){transition-delay:.17s}
+.menu-open .menu-links a:nth-child(5){transition-delay:.21s}.menu-open .menu-links a:nth-child(6){transition-delay:.25s}
+.menu-open .menu-links a:nth-child(7){transition-delay:.29s}.menu-open .menu-links a:nth-child(8){transition-delay:.33s}
+.menu-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-top:20px}
+html.menu-open,html.menu-open body{overflow:hidden}
+@media (max-width:980px){
+  .menu-btn{display:inline-block}
+  .nav{padding:12px clamp(16px,4vw,32px)}
+}
+@media (max-width:560px){
+  .nav-right .lang{display:none}
+  .nav-cta{padding:.7em 1em}
+}
+@media (min-width:981px){.menu{display:none}}
+
+/* ============ Small screens: rhythm and readability ============ */
+@media (max-width:600px){
+  .console-body{font-size:.78rem;line-height:1.75;padding:16px 14px 6px}
+  .ind1{padding-left:.9em}
+  .ind2{padding-left:1.8em}
+  .console-bar{padding:10px 14px}
+  .bug{margin:6px 14px 0;padding:14px}
+  .eyebrow{margin-bottom:14px}
+  .h2{font-size:clamp(1.65rem,7.4vw,2.2rem)}
+  .lede{font-size:1.05rem}
+  .layer-grid{gap:16px}
+  .role{padding-bottom:40px}
+  .timeline{padding-left:34px}
+  .node{left:-34px}
+  .tl-line{left:9px}
+  .links .link-row{padding:14px 2px}
+  .form{padding:20px}
+  .footer-row{flex-direction:column;align-items:flex-start;gap:8px}
+}
+@media (max-width:360px){
+  .static-copy .xl{font-size:2rem}
+  .btn{padding:.9em 1.2em}
+}
+@media (prefers-reduced-motion: reduce){.menu-links a{opacity:1;transform:none}}
+
+/* tablets: keep the profile as two columns so the image never dominates */
+@media (min-width:760px) and (max-width:980px){
+  .profile-grid{grid-template-columns:1.15fr .85fr;gap:36px}
+  .facts{grid-template-columns:repeat(4,1fr)}
+  .facts li:nth-child(3){border-left:1px solid var(--line);padding-left:22px}
+  .facts li:nth-child(n+3){border-top:0}
+}
+@media (max-width:759px){.profile-figure{max-width:560px;width:100%;margin-inline:auto}}
+/* large monitors: a wider stage so the page does not float in empty space */
+@media (min-width:1900px){.wrap{max-width:1440px}.layer-grid,.stack-grid{gap:28px}}

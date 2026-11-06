@@ -1,7 +1,7 @@
 window.I18N = {
   es: {
     "skip": "Saltar al contenido",
-    "nav.profile": "Perfil", "nav.layers": "Capas", "nav.experience": "Experiencia", "nav.stack": "Stack", "nav.faq": "Preguntas", "nav.cta": "Hablemos",
+    "nav.profile": "Perfil", "nav.layers": "Capas", "nav.experience": "Experiencia", "nav.stack": "Stack", "nav.faq": "Preguntas", "nav.cta": "Hablemos", "nav.suite": "Pruébalo", "nav.framework": "Framework", "nav.contact": "Contacto", "menu.open": "Abrir menú", "menu.close": "Cerrar menú",
     "hero.kicker": "Carlos Ríos · QA Automation Engineer",
     "hero.b1": "Encuentro el error antes que tus usuarios.",
     "hero.b2": "Cada release trae ruido.|Yo lo convierto en señal.",
@@ -110,7 +110,7 @@ window.I18N = {
   },
   en: {
     "skip": "Skip to content",
-    "nav.profile": "Profile", "nav.layers": "Layers", "nav.experience": "Experience", "nav.stack": "Stack", "nav.faq": "FAQ", "nav.cta": "Let's talk",
+    "nav.profile": "Profile", "nav.layers": "Layers", "nav.experience": "Experience", "nav.stack": "Stack", "nav.faq": "FAQ", "nav.cta": "Let's talk", "nav.suite": "Try it", "nav.framework": "Framework", "nav.contact": "Contact", "menu.open": "Open menu", "menu.close": "Close menu",
     "hero.kicker": "Carlos Ríos · QA Automation Engineer",
     "hero.b1": "I find the bug before your users do.",
     "hero.b2": "Every release brings noise.|I turn it into signal.",

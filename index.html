@@ -45,18 +45,43 @@
       <button type="button" data-lang="es" aria-pressed="true">ES</button>
       <button type="button" data-lang="en" aria-pressed="false">EN</button>
     </div>
-    <a class="btn btn-accent btn-sm" href="#contacto" data-i18n="nav.cta">Hablemos</a>
+    <a class="btn btn-accent btn-sm nav-cta" href="#contacto" data-i18n="nav.cta">Hablemos</a>
+    <button type="button" class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="menu" aria-label="Abrir menú">
+      <span aria-hidden="true"></span><span aria-hidden="true"></span>
+    </button>
   </div>
 </header>
+
+<div class="menu" id="menu" aria-hidden="true">
+  <nav class="menu-links" aria-label="Menú">
+    <a href="#perfil"><span class="mono">01</span><span data-i18n="nav.profile">Perfil</span></a>
+    <a href="#capas"><span class="mono">02</span><span data-i18n="nav.layers">Capas</span></a>
+    <a href="#suite"><span class="mono">03</span><span data-i18n="nav.suite">Pruébalo</span></a>
+    <a href="#experiencia"><span class="mono">04</span><span data-i18n="nav.experience">Experiencia</span></a>
+    <a href="#framework"><span class="mono">05</span><span data-i18n="nav.framework">Framework</span></a>
+    <a href="#stack"><span class="mono">06</span><span data-i18n="nav.stack">Stack</span></a>
+    <a href="#faq"><span class="mono">07</span><span data-i18n="nav.faq">Preguntas</span></a>
+    <a href="#contacto"><span class="mono">08</span><span data-i18n="nav.contact">Contacto</span></a>
+  </nav>
+  <div class="menu-foot">
+    <div class="lang" role="group" aria-label="Idioma / Language">
+      <button type="button" data-lang="es" aria-pressed="true">ES</button>
+      <button type="button" data-lang="en" aria-pressed="false">EN</button>
+    </div>
+    <a class="btn btn-ghost cv-link" href="assets/cv/Carlos-Rios-CV-ES.pdf" download data-i18n="cta.cv">Descargar CV</a>
+  </div>
+</div>
 
 <main id="main" tabindex="-1">
 
 <!-- ===== HERO: scroll-scrubbed journey ===== -->
 <section class="hero" id="hero" aria-label="Introducción">
   <div class="stage">
-    <div class="poster" aria-hidden="true"></div>
-    <video id="hero-video" preload="none" muted playsinline aria-hidden="true" tabindex="-1"></video>
-    <div class="scrim" aria-hidden="true"></div>
+    <div class="visual" aria-hidden="true">
+      <div class="poster"></div>
+      <video id="hero-video" preload="none" muted playsinline tabindex="-1"></video>
+      <div class="scrim"></div>
+    </div>
 
     <div class="band band-1 fx-scatter" data-a="0" data-b="0.32">
       <p class="kicker chip mono" data-i18n="hero.kicker">Carlos Ríos · QA Automation Engineer</p>
@@ -106,7 +131,7 @@
       <p data-i18n="profile.p2">Me muevo bien en equipos Scrum y Kanban, con Jira, Azure DevOps y TestRail. Cuando encuentro un defecto, lo documento para que se pueda reproducir a la primera: pasos, evidencia y resultado esperado contra el real.</p>
     </div>
     <figure class="profile-figure reveal">
-      <img src="assets/img/hero-ending.jpg" alt="" width="1920" height="1080" loading="lazy" decoding="async">
+      <img src="assets/img/profile-signal.jpg" alt="" width="1200" height="1020" loading="lazy" decoding="async">
       <figcaption class="mono chip" data-i18n="profile.fig">estado final: 0 ruido</figcaption>
     </figure>
     <ul class="facts reveal" role="list">
@@ -385,6 +410,7 @@
 
 <div class="toast mono" id="toast" role="status" aria-live="polite"></div>
 
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
 <script src="assets/i18n.js"></script>
 <script src="assets/site.js"></script>
 </body>
